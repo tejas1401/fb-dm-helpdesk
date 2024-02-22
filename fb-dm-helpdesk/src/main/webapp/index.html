@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect your page</title>
+
+    <style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1E4D91; /* Facebook blue background */
+    /*color: #fff; /* Text color */
+  }
+  .container {
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 20px;
+    width: 400px;
+    text-align: center;
+    margin: 15% auto;
+    font-size: 20px;
+  }
+  #connect{
+    width: 80%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #1E4D91;
+    color: #fff;
+    margin-top: 25px;
+    margin-bottom: 20px;
+     font-size: 20px;
+  }
+  button:hover{
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<p id="profile"></p>
+<div class="container">
+    <p>Facebook Page Integration</p>
+    <button id="connect" type="button">Connect Page</button>
+</div>
+<script>
+
+// Add the Facebook SDK for Javascript
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+window.fbAsyncInit = function() {
+  // Initialize the SDK with your app and the Graph API version for your app
+  FB.init({
+    appId: '945318469849011',
+    xfbml: true,
+    version: 'v19.0'
+  });
+};
+
+// Event listener for the "Connect Page" button
+document.getElementById('connect').addEventListener('click', function() {
+  // Trigger Facebook Login
+  FB.login(function(response) {
+    if (response.authResponse) {
+      console.log('Welcome! Fetching your information.... ');
+      // Retrieve user information
+      FB.api('/me', {fields: 'name, email'}, function(response) {
+        document.getElementById("profile").innerHTML = "Good to see you, " + response.name + ". I see your email address is " + response.email;
+        // Here you can proceed with further actions, such as fetching pages
+      });
+    } else {
+      console.log('User cancelled login or did not fully authorize.');
+    }
+  });
+});
+
+</script>
+</body>
+</html>
+

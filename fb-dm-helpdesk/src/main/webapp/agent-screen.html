@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversation Page</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  .sidebar {
+    height: 100vh;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #004E96;
+    padding-top: 20px;
+  }
+  .sidebar a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+  }
+  .content {
+    margin-left: 220px;
+    padding: 20px;
+  }
+  .conversation-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  .conversation {
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .conversation:last-child {
+    margin-bottom: 0;
+  }
+  .conversation-details {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  .logos{
+    width: 65px;
+  }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <a href="#"><img class="logos" src="richpanel.png" alt="Conversations"></a>
+  <a href="#" style="background-color: #ffffff;"><img class="logos" src="inbox.png" alt="Conversations"></a>
+  <a href="#"><img class="logos" src="friends.png" alt="Conversations"></a>
+  <a href="#"><img class="logos" src="trend.png" alt="Conversations"></a>
+  <!-- Add other logo links here -->
+</div>
+
+<div class="content">
+  <div class="conversation-list">
+    <div class="conversation">Conversation 1</div>
+    <div class="conversation">Conversation 2</div>
+    <!-- Add more conversation items here -->
+  </div>
+  
+  <div class="conversation-details">
+    <!-- Display user details and previous messages here -->
+  </div>
+</div>
+
+</body>
+</html>
